@@ -1,5 +1,10 @@
 package Modelos;
 
+import com.sun.jdi.connect.spi.Connection;
+import java.beans.Statement;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 public class Usuario {
 
     public String getNombre_Cliente() {
@@ -64,4 +69,28 @@ public class Usuario {
     private String Año_Vehiculo;
     private String Problema; 
     private String Estado_problema; 
+    
+    
+    
+    
+    
+    public void Mostrar(JTable tabla) {
+        Connection conexion = (Connection) ClaseConexion.getConexion();
+ 
+        DefaultTableModel modeloDeDatos = new DefaultTableModel();
+        modeloDeDatos.setColumnIdentifiers(new Object[]{"UUID_codigo", "Nombre_Estudiante", "Tipo_codigo", "carnet_estudiante"});
+        try {
+            Statement statement = conexion.createStatement();
+             ResultSet rs = statement.executeQuery("SELECT * FROM tbCodigos");
+             while (rs.next()) {
+                modeloDeDatos.addRow(new Object[]{rs.getString("UUID_codigo"),
+                    rs.getString("Nombre_Estudiante"),
+                    rs.getString("Tipo_codigo"),
+                    rs.getInt("carnet_estudiante")});
+            }
+             tabla.setModel(modeloDeDatos);
+        } catch (Exception e) {
+            System.out.println("Este es el error en el modelo, metodo mostrar " + e);
+        }
+    }    
 }
