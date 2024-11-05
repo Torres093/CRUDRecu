@@ -1,9 +1,12 @@
 package Modelos;
 
-import com.sun.jdi.connect.spi.Connection;
+import java.sql.*;
 import java.beans.Statement;
-import javax.swing.JTable;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import javax.swing.table.DefaultTableModel;
+import java.util.UUID;
+
 
 public class Usuario {
 
@@ -15,82 +18,125 @@ public class Usuario {
         this.Nombre_Cliente = Nombre_Cliente;
     }
 
-    public int getTelefono_Cliente() {
+
+
+  
+ 
+    public String getEdad() {
+        return Edad;
+    }
+
+    public void setEdad(String Edad) {
+        this.Edad = Edad;
+    }
+
+    public String getCorreo_Cliente() {
+        return Correo_Cliente;
+    }
+
+    public void setCorreo_Cliente(String Correo_Cliente) {
+        this.Correo_Cliente = Correo_Cliente;
+    }
+
+    public String getContraseña() {
+        return Contraseña;
+    }
+
+    public void setContraseña(String Contraseña) {
+        this.Contraseña = Contraseña;
+    }
+
+    public String getUUID_Usuario() {
+        return UUID_Usuario;
+    }
+
+    public void setUUID_Usuario(String UUID_Usuario) {
+        this.UUID_Usuario = UUID_Usuario;
+    }
+    
+    
+
+    public String getTelefono_Cliente() {
         return Telefono_Cliente;
     }
 
-    public void setTelefono_Cliente(int Telefono_Cliente) {
+    public void setTelefono_Cliente(String Telefono_Cliente) {
         this.Telefono_Cliente = Telefono_Cliente;
     }
-
-    public String getVehiculo() {
-        return Vehiculo;
-    }
-
-    public void setVehiculo(String Vehiculo) {
-        this.Vehiculo = Vehiculo;
-    }
-
-    public String getModelo() {
-        return Modelo;
-    }
-
-    public void setModelo(String Modelo) {
-        this.Modelo = Modelo;
-    }
-
-    public String getAño_Vehiculo() {
-        return Año_Vehiculo;
-    }
-
-    public void setAño_Vehiculo(String Año_Vehiculo) {
-        this.Año_Vehiculo = Año_Vehiculo;
-    }
-
-    public String getProblema() {
-        return Problema;
-    }
-
-    public void setProblema(String Problema) {
-        this.Problema = Problema;
-    }
-
-    public String getEstado_problema() {
-        return Estado_problema;
-    }
-
-    public void setEstado_problema(String Estado_problema) {
-        this.Estado_problema = Estado_problema;
-    }
+    
+    private String UUID_Usuario;
     private String Nombre_Cliente;
-    private int Telefono_Cliente;
-    private String Vehiculo;
-    private String Modelo;
-    private String Año_Vehiculo;
-    private String Problema; 
-    private String Estado_problema; 
+    private String Telefono_Cliente;
+    private String Edad;
+    private String Correo_Cliente;
+    private String Contraseña; 
+   
+    public void GuardarUsuario () {
+    Connection conexion = ClaseConexion.getConexion();
+    try {
+         PreparedStatement addUsuario = conexion.prepareStatement("INSERT INTO Clientes(cliente_id, nombre, telefono, correo_electronico, edad, contraseña) VALUES (?, ?, ?, ?, ?, ?)"); 
+         addUsuario.setString(1, UUID.randomUUID().toString());
+         addUsuario.setString(2, getNombre_Cliente());
+         addUsuario.setString(3, getTelefono_Cliente()); 
+         addUsuario.setString(4, getEdad()); 
+         addUsuario.setString(5, getCorreo_Cliente()); 
+         addUsuario.setString(6, getContraseña());
+         
+         addUsuario.executeUpdate(); 
+
+    }  catch(SQLException ex){
+        System.out.println("El error es el siguiente: Metodo guardar" + ex); 
+    }
     
     
     
+    }
     
     
-    public void Mostrar(JTable tabla) {
-        Connection conexion = (Connection) ClaseConexion.getConexion();
- 
-        DefaultTableModel modeloDeDatos = new DefaultTableModel();
-        modeloDeDatos.setColumnIdentifiers(new Object[]{"UUID_codigo", "Nombre_Estudiante", "Tipo_codigo", "carnet_estudiante"});
-        try {
-            Statement statement = conexion.createStatement();
-             ResultSet rs = statement.executeQuery("SELECT * FROM tbCodigos");
-             while (rs.next()) {
-                modeloDeDatos.addRow(new Object[]{rs.getString("UUID_codigo"),
-                    rs.getString("Nombre_Estudiante"),
-                    rs.getString("Tipo_codigo"),
-                    rs.getInt("carnet_estudiante")});
-            }
-             tabla.setModel(modeloDeDatos);
-        } catch (Exception e) {
-            System.out.println("Este es el error en el modelo, metodo mostrar " + e);
+    
+    public boolean iniciarSesion(){
+    Connection conexion = ClaseConexion.getConexion(); 
+    boolean resultado = false;
+    try{
+        String sql = "SELECT * FROM Clientes WHERE Correo_Cliente = ? AND Contraseña = ?"; 
+        PreparedStatement statement = conexion.prepareStatement(sql); 
+        statement.setString(1, getCorreo_Cliente());
+        statement.setString(2, getContraseña());
+        
+        ResultSet resultSet = statement.executeQuery(); 
+        if(resultSet.next()){
+           resultado = true; 
         }
-    }    
+    
+    }catch (SQLException ex) {
+            System.out.println("Error en el modelo: método iniciarSesion " + ex);
+        }
+     return resultado;
+    }
+    
+    public String convertirSHA256(String password) {
+    MessageDigest md = null; 
+    try{
+       md = MessageDigest.getInstance("SHA-256"); 
+       
+    }
+    catch(NoSuchAlgorithmException e){
+        System.out.println(e.toString()); 
+        return null; 
+    
+    }
+    byte[] hash = md.digest(password.getBytes()); 
+    StringBuffer sb = new StringBuffer(); 
+    
+    for(byte b : hash){
+            sb.append(String.format("%02x", b)); 
+    }
+    return sb.toString();
+    }
+    
+    
 }
+    
+    
+
+

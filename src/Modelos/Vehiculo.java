@@ -3,6 +3,7 @@ package Modelos;
 import com.sun.jdi.connect.spi.Connection;
 import java.beans.Statement;
 import javax.swing.JTable;
+import java.sql.*;
 import javax.swing.table.DefaultTableModel;
 
 public class Vehiculo {

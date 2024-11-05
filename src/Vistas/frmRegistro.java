@@ -32,11 +32,16 @@ public class frmRegistro extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnAcceder = new javax.swing.JButton();
-        txtContraseña = new javax.swing.JTextField();
+        txtEdad = new javax.swing.JTextField();
         txtNombreReg = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        txtTelefono = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtContraseña1 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        btnLogin = new javax.swing.JButton();
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/klipartz.com.png"))); // NOI18N
         jLabel3.setText(",l");
@@ -51,10 +56,10 @@ public class frmRegistro extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/294643644_754792195635590_7173154425657809578_n.jpg"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 200, 180));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 590, 200, 180));
 
-        jLabel4.setText("Contraseña");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
+        jLabel4.setText("Edad");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, -1, -1));
 
         btnAcceder.setText("ACCEDER");
         btnAcceder.addActionListener(new java.awt.event.ActionListener() {
@@ -62,8 +67,8 @@ public class frmRegistro extends javax.swing.JFrame {
                 btnAccederActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAcceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 110, 50));
-        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 170, -1));
+        jPanel1.add(btnAcceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 110, 50));
+        jPanel1.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 170, -1));
 
         txtNombreReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,6 +83,23 @@ public class frmRegistro extends javax.swing.JFrame {
 
         jLabel6.setText("Correo Electronico");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, -1, -1));
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 170, -1));
+
+        jLabel7.setText("Telefono");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, -1, -1));
+        jPanel1.add(txtContraseña1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 170, -1));
+
+        jLabel8.setText("Contraseña");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, -1, -1));
+
+        btnLogin.setText("¿Ya creaste tu cuenta?");
+        btnLogin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 102, 102), 1, true));
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 508, -1, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,7 +109,7 @@ public class frmRegistro extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 817, Short.MAX_VALUE)
         );
 
         pack();
@@ -100,6 +122,10 @@ public class frmRegistro extends javax.swing.JFrame {
     private void txtNombreRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreRegActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreRegActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,16 +163,21 @@ public class frmRegistro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAcceder;
+    public javax.swing.JButton btnAcceder;
+    public javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtContraseña;
+    public javax.swing.JTextField txtContraseña1;
     public javax.swing.JTextField txtCorreo;
+    public javax.swing.JTextField txtEdad;
     public javax.swing.JTextField txtNombreReg;
+    public javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }
