@@ -8,12 +8,12 @@ package Vistas;
  *
  * @author Estudiante
  */
-public class frmCliente extends javax.swing.JFrame {
+public class frmVehiculos extends javax.swing.JFrame {
 
     /**
      * Creates new form frmCliente
      */
-    public frmCliente() {
+    public frmVehiculos() {
         initComponents();
     }
 
@@ -31,7 +31,7 @@ public class frmCliente extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        txtVehiculo = new javax.swing.JTextField();
+        txtMarca = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtVehiculo = new javax.swing.JTable();
         btnEliminar = new javax.swing.JButton();
@@ -64,12 +64,12 @@ public class frmCliente extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, 160, -1));
 
-        txtVehiculo.addActionListener(new java.awt.event.ActionListener() {
+        txtMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtVehiculoActionPerformed(evt);
+                txtMarcaActionPerformed(evt);
             }
         });
-        jPanel1.add(txtVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 140, 160, -1));
+        jPanel1.add(txtMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 140, 160, -1));
 
         jtVehiculo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -106,8 +106,8 @@ public class frmCliente extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, -1, -1));
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 50, -1));
 
-        jLabel4.setText("VEHICULO:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, -1, -1));
+        jLabel4.setText("MARCA:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 50, -1));
 
         jLabel5.setText("MODELO: ");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, -1, -1));
@@ -127,7 +127,7 @@ public class frmCliente extends javax.swing.JFrame {
         jPanel1.add(txtAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 220, 160, 30));
 
         jLabel8.setText("PROBLEMA: ");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, 70, 20));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, 70, 20));
         jPanel1.add(txtProblema, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 260, 160, 60));
 
         jLabel9.setText("ESTADO DEL PROBLEMA:");
@@ -159,9 +159,10 @@ public class frmCliente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 854, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,9 +188,9 @@ public class frmCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefonoActionPerformed
 
-    private void txtVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVehiculoActionPerformed
+    private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtVehiculoActionPerformed
+    }//GEN-LAST:event_txtMarcaActionPerformed
 
     private void txtModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtModeloActionPerformed
         // TODO add your handling code here:
@@ -212,20 +213,21 @@ public class frmCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmVehiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmVehiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmVehiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmVehiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmCliente().setVisible(true);
+                new frmVehiculos().setVisible(true);
             }
         });
     }
@@ -250,12 +252,12 @@ public class frmCliente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable jtVehiculo;
-    private javax.swing.JTextField txtAño;
+    public javax.swing.JTextField txtAño;
     public javax.swing.JTextField txtDescripción;
-    private javax.swing.JTextField txtModelo;
+    public javax.swing.JTextField txtMarca;
+    public javax.swing.JTextField txtModelo;
     public javax.swing.JTextField txtNombre;
     public javax.swing.JTextField txtProblema;
     public javax.swing.JTextField txtTelefono;
-    public javax.swing.JTextField txtVehiculo;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,7 @@
 package Controladores;
 
 import Modelos.Usuario; 
+import Vistas.frmInicio;
 import Vistas.frmRegistro; 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -10,12 +11,13 @@ public class ctrlRegistro implements MouseListener{
     
     Usuario Modelos; 
     frmRegistro Vistas; 
-
+    
     public ctrlRegistro(Usuario Modelos, frmRegistro Vistas) {
         this.Modelos = Modelos;
         this.Vistas = Vistas;
         
         Vistas.btnAcceder.addMouseListener(this);
+        Vistas.btnLogin.addMouseListener(this);
     }
 
     @Override
@@ -29,7 +31,10 @@ public class ctrlRegistro implements MouseListener{
             
             JOptionPane.showMessageDialog(Vistas, "Usuario Guardado");
         }
-       
+         if(e.getSource() == Vistas.btnLogin){
+            frmInicio.initFrmInicio();
+            Vistas.dispose();
+        }
     }
 
     @Override

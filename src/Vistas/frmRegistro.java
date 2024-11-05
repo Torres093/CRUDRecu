@@ -4,15 +4,22 @@
  */
 package Vistas;
 
+import Controladores.ctrlRegistro;
+import Modelos.Usuario;
+
 /**
  *
  * @author Estudiante
  */
 public class frmRegistro extends javax.swing.JFrame {
 
-    /**
-     * Creates new form frmRegistro
-     */
+    public static void initFrmRegistro(){
+        Usuario modelo = new Usuario();
+        frmRegistro vista = new frmRegistro();
+        ctrlRegistro controlador = new ctrlRegistro(modelo, vista);
+        
+        vista.setVisible(true);
+    }
     public frmRegistro() {
         initComponents();
     }
@@ -157,7 +164,8 @@ public class frmRegistro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmRegistro().setVisible(true);
+                initFrmRegistro();
+
             }
         });
     }
